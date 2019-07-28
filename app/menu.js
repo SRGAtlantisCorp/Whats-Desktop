@@ -187,10 +187,6 @@
             label: "&" + name,
             submenu: [
                 {
-                    label: _('About') + " " + name,
-                    role: 'about'
-                },
-                {
                     type: 'separator'
                 },
                 {
@@ -231,10 +227,6 @@
         template.unshift({
             label: '&File',
             submenu: [
-                {
-                    label: _('About'),
-                    click: () => { global.about.init(); }
-                },
                 {
                     label: _('Quit'),
                     accelerator: 'Ctrl+Q',

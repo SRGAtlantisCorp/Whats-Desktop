@@ -63,8 +63,6 @@
         }
     });
 
-    
-    app.setAppUserModelId("it.enrico204.whatsapp-desktop");
     app.setAsDefaultProtocolClient("whatsapp");
 
     if (process.argv.indexOf("--debug-log") >= 0) {
@@ -750,44 +748,6 @@
     };
 
     global.pjson = pjson;
-    global.about = {
-        init() {
-            // if there is already one instance of the window created show that one
-            if (about.window){
-                about.window.show();
-            } else {
-                about.openWindow();
-                about.window.setMenu(null);
-                about.window.setMenuBarVisibility(false);
-            }
-        },
-
-        openWindow() {
-            about.window = new BrowserWindow(
-                {
-                    "width": 600,
-                    "height": 450,
-                    "resizable": true,
-                    "center": true,
-                    "frame": true,
-                    "webPreferences": {
-                      "nodeIntegration": true,
-                    }
-                }
-            );
-
-            about.window.loadURL("file://" + __dirname + "/html/about.html");
-            about.window.show();
-            about.window.webContents.on("new-window", (e, url) => {
-                require('electron').shell.openExternal(url);
-                e.preventDefault();
-            });
-
-            about.window.on("close", () => {
-                about.window = null;
-            });
-        }
-    };
 
     const {ipcMain} = require('electron');
     ipcMain.on('phoneinfoupdate', (event, arg) => {
